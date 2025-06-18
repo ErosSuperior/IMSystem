@@ -1,10 +1,10 @@
-package org.example.service.impl;
+package example.service.impl;
 
-import org.example.entity.User;
+import example.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.example.repository.UserRepository;
-import org.example.service.UserInterface;
+import example.repository.UserRepository;
+import example.service.UserInterface;
 
 import java.util.Optional;
 
@@ -17,7 +17,7 @@ public class Userimpl implements UserInterface {
     @Override
     public User login(String email, String password) {
         Optional<User> user = repo.findByEmail(email);
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
+        if (user.isPresent() && user.get().getPassword_hash().equals(password)) {
             return user.get();
         }
         return null;

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database setting -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/ims_db</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">4</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache -->
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+
+        <!-- Show all executed SQL to console -->
+        <property name="hibernat.show_sql">true</property>
+        <property name="hibernate.fomat_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!-- Entity mapping -->
+        <mapping class="example.entities.User" />
+        <mapping class="example.entities.InterviewResult" />
+        <mapping class="example.entities.JobApplication" />
+        <mapping class="example.entities.Role" />
+        <mapping class="example.entities.Offer" />
+        <mapping class="example.entities.Job" />
+        <mapping class="example.entities.Interview" />
+        <mapping class="example.entities.Candidate" />
+
+
+    </session-factory>
+</hibernate-configuration>

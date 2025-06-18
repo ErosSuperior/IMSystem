@@ -1,6 +1,6 @@
-package org.example.service;
+package example.service;
 
-import org.example.entity.User;
+import example.entities.User;
 
 public interface UserInterface {
     User
