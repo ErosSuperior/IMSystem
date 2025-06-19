@@ -18,10 +18,11 @@ public class InterviewResult {
     private String feedback;
 
     @Enumerated(EnumType.STRING)
-    private Result result = Result.NA;
+    @Column(columnDefinition = "ENUM('Passed','Failed','N/A') DEFAULT 'N/A'")
+    private Result result = Result.N_A;
 
     public enum Result {
-        Passed, Failed, NA
+        Passed, Failed, N_A
     }
 
     // Getters and Setters

@@ -25,7 +25,8 @@ public class Offer {
     private Date approved_at;
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.WaitingForApproval;
+    @Column(columnDefinition = "ENUM('Waiting for approval','Approved','Rejected','Waiting for response','Accepted','Declined','Cancelled') DEFAULT 'Waiting for approval'")
+    private Status status = Status.Waiting_for_approval;
 
     private Date response_date;
 
@@ -33,10 +34,10 @@ public class Offer {
     private String note;
 
     public enum Status {
-        WaitingForApproval,
+        Waiting_for_approval,
         Approved,
         Rejected,
-        WaitingForResponse,
+        Waiting_for_response,
         Accepted,
         Declined,
         Cancelled
