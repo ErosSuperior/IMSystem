@@ -14,12 +14,22 @@ public class Userimpl implements UserInterface {
     @Autowired
     private UserRepository repo;
 
+    public UserRepository getRepo() {
+        return repo;
+    }
+
+    public void setRepo(UserRepository repo) {
+        this.repo = repo;
+    }
+
     @Override
-    public User login(String email, String password) {
-        Optional<User> user = repo.findByEmail(email);
+    public User login(String username, String password) {
+        Optional<User> user = repo.findByUsername(username);
         if (user.isPresent() && user.get().getPassword_hash().equals(password)) {
             return user.get();
         }
         return null;
     }
+
+
 }

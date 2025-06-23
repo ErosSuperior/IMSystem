@@ -4,6 +4,6 @@ import example.entities.User;
 
 public interface UserInterface {
     User
-    login(String email, String password);
+    login(String username, String password);
 }
 
