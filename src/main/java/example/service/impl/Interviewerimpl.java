@@ -1,4 +1,4 @@
-package example.service;
+package example.service.impl;
 
 public class Interviewerimpl {
 }

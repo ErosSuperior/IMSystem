@@ -3,7 +3,7 @@ package example.service.impl;
 import example.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import example.repository.UserRepository;
+import example.repository.UserRepo;
 import example.service.UserInterface;
 
 import java.util.Optional;
@@ -12,13 +12,13 @@ import java.util.Optional;
 public class Userimpl implements UserInterface {
 
     @Autowired
-    private UserRepository repo;
+    private UserRepo repo;
 
-    public UserRepository getRepo() {
+    public UserRepo getRepo() {
         return repo;
     }
 
-    public void setRepo(UserRepository repo) {
+    public void setRepo(UserRepo repo) {
         this.repo = repo;
     }
 

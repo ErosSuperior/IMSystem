@@ -17,10 +17,14 @@ public class Interview {
     @JoinColumn(name = "job_id")
     private Job job;
 
+    @Column(columnDefinition = "DATETIME")
     private Date schedule_time;
+    
+    @Column(columnDefinition = "DATETIME")
     private Date end_time;
 
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "ENUM('Scheduled', 'Cancelled', 'Completed') DEFAULT 'Scheduled'")
     private Status status = Status.Scheduled;
 
     @Column(columnDefinition = "TEXT")
@@ -124,4 +128,4 @@ public class Interview {
     public void setOffers(List<Offer> offers) {
         this.offers = offers;
     }
-}
+} 

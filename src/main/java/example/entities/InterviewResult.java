@@ -12,6 +12,7 @@ public class InterviewResult {
     @JoinColumn(name = "interview_id")
     private Interview interview;
 
+    @Column(columnDefinition = "INT CHECK (score BETWEEN 0 AND 100)")
     private Integer score;
 
     @Column(columnDefinition = "TEXT")
@@ -22,7 +23,22 @@ public class InterviewResult {
     private Result result = Result.N_A;
 
     public enum Result {
-        Passed, Failed, N_A
+        Passed, Failed, N_A("N/A");
+        
+        private final String value;
+        
+        Result() {
+            this.value = this.name();
+        }
+        
+        Result(String value) {
+            this.value = value;
+        }
+        
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
     // Getters and Setters

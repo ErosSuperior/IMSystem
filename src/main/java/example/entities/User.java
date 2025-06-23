@@ -31,6 +31,7 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @Column(columnDefinition = "BOOLEAN DEFAULT TRUE")
     private Boolean status = true;
 
     @OneToMany(mappedBy = "created_by")

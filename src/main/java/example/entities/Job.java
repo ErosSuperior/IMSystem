@@ -10,6 +10,7 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int job_id;
 
+    @Column(nullable = false, length = 100)
     private String title;
 
     @Column(columnDefinition = "TEXT")
@@ -19,23 +20,28 @@ public class Job {
     private Date end_date;
     private Integer salary_from;
     private Integer salary_to;
+    
+    @Column(length = 255)
     private String address;
 
     @Column(columnDefinition = "TEXT")
     private String benefits;
 
+    @Column(length = 100)
     private String levels;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "ENUM('Draft', 'Open', 'Closed') DEFAULT 'Draft'")
     private Status status = Status.Draft;
 
     @ManyToOne
     @JoinColumn(name = "created_by")
     private User created_by;
 
+    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
     private Date created_at;
 
     @OneToMany(mappedBy = "job")

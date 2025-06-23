@@ -10,25 +10,46 @@ public class JobApplication {
     private int application_id;
 
     @ManyToOne
-    @JoinColumn(name = "candidate_id")
+    @JoinColumn(name = "candidate_id", nullable = false)
     private Candidate candidate;
 
     @ManyToOne
-    @JoinColumn(name = "job_id")
+    @JoinColumn(name = "job_id", nullable = false)
     private Job job;
 
+    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
     private Date apply_date;
 
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "ENUM('Applied', 'Under Review', 'Rejected', 'Accepted') DEFAULT 'Applied'")
     private Status status = Status.Applied;
 
+    @Column(length = 255)
     private String cv_path;
 
     @Column(columnDefinition = "TEXT")
     private String note;
 
     public enum Status {
-        Applied, UnderReview, Rejected, Accepted
+        Applied, 
+        Under_Review("Under Review"), 
+        Rejected, 
+        Accepted;
+        
+        private final String value;
+        
+        Status() {
+            this.value = this.name();
+        }
+        
+        Status(String value) {
+            this.value = value;
+        }
+        
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
     // Getters and Setters

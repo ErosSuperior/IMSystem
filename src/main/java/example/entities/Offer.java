@@ -21,7 +21,10 @@ public class Offer {
     @JoinColumn(name = "approved_by")
     private User approved_by;
 
+    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
     private Date created_at;
+    
+    @Column(columnDefinition = "DATETIME NULL")
     private Date approved_at;
 
     @Enumerated(EnumType.STRING)
@@ -34,13 +37,28 @@ public class Offer {
     private String note;
 
     public enum Status {
-        Waiting_for_approval,
+        Waiting_for_approval("Waiting for approval"),
         Approved,
         Rejected,
-        Waiting_for_response,
+        Waiting_for_response("Waiting for response"),
         Accepted,
         Declined,
-        Cancelled
+        Cancelled;
+        
+        private final String value;
+        
+        Status() {
+            this.value = this.name();
+        }
+        
+        Status(String value) {
+            this.value = value;
+        }
+        
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
     // Getters and Setters

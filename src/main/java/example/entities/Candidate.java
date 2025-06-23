@@ -18,7 +18,7 @@ public class Candidate {
     @Column(nullable = false, length = 100)
     private String full_name;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(nullable = false, length = 100)
     private String email;
 
     @Column(length = 20)
@@ -29,20 +29,30 @@ public class Candidate {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Column(length = 255)
     private String address;
+    
+    @Column(length = 100)
     private String current_position;
 
     @Column(columnDefinition = "TEXT")
     private String skills;
 
     private Integer years_experience;
+    
+    @Column(length = 100)
     private String highest_level;
+    
+    @Column(length = 255)
     private String cv_file_path;
+    
+    @Column(length = 50)
     private String status;
 
     @Column(columnDefinition = "TEXT")
     private String note;
 
+    @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean self_registered = false;
 
     @OneToMany(mappedBy = "candidate")
