@@ -88,6 +88,7 @@ INSERT INTO interview_results (result_id, interview_id, score, feedback, result)
 (1, 3, 92, 'Excellent technical skills, great problem-solving approach. Strong hire recommendation.', 'Passed');
 
 -- ========================
+
 -- Seed Offers
 -- ========================
 INSERT INTO offers (offer_id, interview_id, created_by, approved_by, created_at, approved_at, status, response_date, note) VALUES

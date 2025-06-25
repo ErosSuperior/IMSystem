@@ -1,5 +1,7 @@
 package example.controller;
 
+import example.entities.Candidate;
+import example.service.CandidateInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +21,9 @@ import java.util.ArrayList;
 public class LoginController {
     @Autowired
     private UserInterface userService;
+    @Autowired
+    private CandidateInterface candidateService;
+
     @GetMapping("/login")
     public String showLoginPage() {
         return "login";
@@ -31,16 +36,18 @@ public class LoginController {
             Model model,
             HttpSession session
     ) {
-User usersaccount = userService.login(username, password);
-        if (usersaccount != null) {
-            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
-                    usersaccount, null, new ArrayList<>() // danh sách quyền (authority) để trống
-            );
+        Candidate candidateaccount = candidateService.login(username, password);
+        User usersaccount = userService.login(username, password);
+        if (usersaccount != null||candidateaccount !=null) {
+            Object principal = (usersaccount != null) ? usersaccount : candidateaccount;
+            UsernamePasswordAuthenticationToken auth =
+                    new UsernamePasswordAuthenticationToken(principal, null, new ArrayList<>());
             SecurityContextHolder.getContext().setAuthentication(auth);
 
-            session.setAttribute("useraccount", usersaccount); // nếu bạn vẫn cần session riêng
+            session.setAttribute("useraccount", usersaccount);
+            session.setAttribute("candidateaccount", candidateaccount);// nếu bạn vẫn cần session riêng
             return "redirect:/home";
-        } else {
+        }  else {
             model.addAttribute("error", "Sai thông tin đăng nhập");
             return "login";
         }

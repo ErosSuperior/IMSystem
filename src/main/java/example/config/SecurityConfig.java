@@ -15,8 +15,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
             http
                     .csrf(csrf -> csrf.disable())
+                    .formLogin(form -> form.disable())
                     .authorizeHttpRequests(auth -> auth
-                            .requestMatchers("/login", "/register", "/css/**", "/js/**", "/assets/**","/home").permitAll()
+                            .requestMatchers("/login","/controller/interview-results", "/register", "/css/**", "/js/**", "/assets/**","/home").permitAll()
                             .anyRequest().authenticated()
                     )
                     .logout(logout -> logout
