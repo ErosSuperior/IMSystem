@@ -52,6 +52,13 @@
             <div class="layout-specing">
                 <div class="row">
                     <div class="col-12 mt-4">
+                        <div class="d-flex justify-content-end mb-3">
+                            <a th:href="@{/interview-results/form}" class="btn btn-primary">
+                                <i class="uil uil-plus me-1"></i> Thêm kết quả mới
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
                         <div class="table-responsive shadow rounded">
                             <table class="table table-center bg-white mb-0">
                                 <thead>
@@ -66,19 +73,19 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="result : ${results}">
-                                    <td class="p-3" th:text="${result.result_id}"></td>
-                                    <td class="p-3" th:text="${result.interview.id}"></td>
+                                    <td class="p-3" th:text="${result.resultId}"></td>
+                                    <td class="p-3" th:text="${result.interviewId}"></td>
                                     <td class="p-3" th:text="${result.score}"></td>
                                     <td class="p-3" th:text="${result.feedback}"></td>
                                     <td class="p-3" th:text="${result.result}"></td>
                                     <td class="text-end p-3">
-                                        <a th:href="@{'/interview-results/view/' + ${result.result_id}}" class="btn btn-icon btn-pills btn-soft-primary">
+                                        <a th:href="@{'/interview-results/view/' + ${result.resultId}}" class="btn btn-icon btn-pills btn-soft-primary">
                                             <i class="uil uil-eye"></i>
                                         </a>
-                                        <a th:href="@{'/interview-results/edit/' + ${result.result_id}}" class="btn btn-icon btn-pills btn-soft-success">
+                                        <a th:href="@{'/interview-results/edit/' + ${result.resultId}}" class="btn btn-icon btn-pills btn-soft-success">
                                             <i class="uil uil-pen"></i>
                                         </a>
-                                        <a th:href="@{'/interview-results/delete/' + ${result.result_id}}"
+                                        <a th:href="@{'/interview-results/delete/' + ${result.resultId}}"
                                            onclick="return confirm('Are you sure you want to delete this?')"
                                            class="btn btn-icon btn-pills btn-soft-danger">
                                             <i class="uil uil-trash"></i>

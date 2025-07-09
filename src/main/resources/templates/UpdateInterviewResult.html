@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật kết quả phỏng vấn</title>
+</head>
+<body>
+<h2>Cập nhật kết quả phỏng vấn</h2>
+
+<form th:action="@{/interview-results/update}" method="post">
+    <input type="hidden" name="resultId" th:value="${result.result_id}">
+
+    <label>Interview ID:</label>
+    <input type="number" name="interviewId" th:value="${result.interview.interview_id}" required><br>
+
+    <label>Score:</label>
+    <input type="number" name="score" min="0" max="100" th:value="${result.score}" required><br>
+
+    <label>Feedback:</label>
+    <textarea name="feedback" required th:text="${result.feedback}"></textarea><br>
+
+    <label>Result:</label>
+    <select name="result">
+        <option th:value="Passed" th:selected="${result.result == 'Passed'}">Passed</option>
+        <option th:value="Failed" th:selected="${result.result == 'Failed'}">Failed</option>
+        <option th:value="N_A" th:selected="${result.result == 'N_A'}">N/A</option>
+    </select><br>
+
+    <button type="submit">Cập nhật</button>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+</form>
+<script>
+    setTimeout(function () {
+        let alert = document.querySelector('.alert');
+        if (alert) {
+            alert.style.display = 'none';
+        }
+    }, 3000); // 3 giây
+</script>
+
+
+</body>
+</html>

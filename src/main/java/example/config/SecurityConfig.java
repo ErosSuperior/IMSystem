@@ -17,7 +17,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
                     .csrf(csrf -> csrf.disable())
                     .formLogin(form -> form.disable())
                     .authorizeHttpRequests(auth -> auth
-                            .requestMatchers("/login","/controller/interview-results", "/register", "/css/**", "/js/**", "/assets/**","/home").permitAll()
+                            .requestMatchers(
+                                    "/login",
+                                    "/register",
+                                    "/home",
+                                    "/css/**",
+                                    "/js/**",
+                                    "/assets/**",
+                                    "/api/interview-results",
+                                    "/api/interview-results/add",           // POST from form
+                                    // Web Controller: hiển thị form thêm
+                                    "/interview-results/form",
+                                    "/controller/interview-results",
+                                    "/interview-results/**",
+                                    "/controller/interview-results/**",
+                                    "/**"
+                            ).permitAll()
                             .anyRequest().authenticated()
                     )
                     .logout(logout -> logout

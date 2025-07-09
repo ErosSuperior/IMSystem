@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm kết quả phỏng vấn</title>
+</head>
+<body>
+<h2>Thêm kết quả phỏng vấn</h2>
+
+<form action="/interview-results/add" method="post">
+    <label>Interview ID:</label>
+    <input type="number" name="interview.interview_id" required><br>
+
+    <label>Score:</label>
+    <input type="number" name="score" min="0" max="100" required><br>
+
+    <label>Feedback:</label>
+    <textarea name="feedback" required></textarea><br>
+
+    <label>Result:</label>
+    <select name="result">
+        <option value="Passed">Passed</option>
+        <option value="Failed">Failed</option>
+        <option value="N_A">N_A</option>
+    </select><br>
+
+    <button type="submit">Thêm mới</button>
+</form>
+</body>
+</html>
