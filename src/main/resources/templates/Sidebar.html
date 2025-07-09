@@ -1,0 +1,37 @@
+<!-- Sidebar.html -->
+<div class="sidebar" th:fragment="sidebar">
+    <div class="logo">
+        <span>DEV</span>
+        <span>IMS</span>
+    </div>
+    <div class="menu">
+        <a href="/home" class="menu-item" th:classappend="${currentPath == '/home'} ? ' active'">
+            <i class="mdi mdi-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="/candidate" class="menu-item" th:classappend="${currentPath == '/candidate'} ? ' active'">
+            <i class="mdi mdi-account-group"></i>
+            <span>Candidate</span>
+        </a>
+        <a href="/job" class="menu-item" th:classappend="${currentPath == '/job'} ? ' active'">
+            <i class="mdi mdi-briefcase"></i>
+            <span>Job</span>
+        </a>
+        <a href="/interview" class="menu-item" th:classappend="${currentPath == '/interview'} ? ' active'">
+            <i class="mdi mdi-comment-question-outline"></i>
+            <span>Interview</span>
+        </a>
+        <a href="/interview-result" class="menu-item" th:classappend="${currentPath == '/interview-result'} ? ' active'">
+            <i class="mdi mdi-clipboard-check-outline"></i>
+            <span>Interview Result</span>
+        </a>
+        <a href="/offer" class="menu-item" th:classappend="${currentPath == '/offer'} ? ' active'">
+            <i class="mdi mdi-file-document"></i>
+            <span>Offer</span>
+        </a>
+        <a href="/user" class="menu-item" th:classappend="${currentPath == '/user'} ? ' active'">
+            <i class="mdi mdi-account"></i>
+            <span>User</span>
+        </a>
+    </div>
+</div>

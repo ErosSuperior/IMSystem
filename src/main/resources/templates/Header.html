@@ -1,0 +1,20 @@
+<!-- IMSystem/src/main/resources/templates/Header.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+    <th:block th:fragment="header">
+        <div class="header-bar">
+            <div class="header-actions ms-auto">
+                <i class="mdi mdi-link-variant"></i>
+                <i class="mdi mdi-star-outline"></i>
+                <div class="user-info">
+                    <!-- <strong th:text="${#authentication.name} ?: 'hoamk'">hoamk</strong> -->
+                    <small>HR Department</small>
+                </div>
+                <a href="/logout" class="logout-link">Logout</a>
+            </div>
+        </div>
+    </th:block>
+</body>
+</html>

@@ -1,9 +1,146 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Trang chủ</title>
+    <meta charset="utf-8" />
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/assets/css/materialdesignicons.min.css}" rel="stylesheet">
+    <link th:href="@{/assets/css/style.min.css}" rel="stylesheet">
+    <link th:href="@{/assets/css/remixicon.css}" rel="stylesheet">
+    <style>
+        body {
+            background: #fff;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .header-bar {
+            width: 100%;
+            height: 56px;
+            background: #f7f9f3;
+            border-bottom: 1px solid #ececec;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 32px 0 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+        .main-layout {
+            display: flex;
+        }
+        .sidebar {
+            width: 90px;
+            background: #f7f9f3;
+            min-height: calc(100vh - 56px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 24px;
+            position: fixed;
+            left: 0;
+            top: 56px;
+            z-index: 20;
+            border-right: 1px solid #ececec;
+        }
+        .main-content {
+            margin-left: 90px;
+            margin-top: 56px;
+            width: calc(100% - 90px);
+            min-height: calc(100vh - 56px);
+            background: #fff;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .header-actions i {
+            font-size: 1.2rem;
+            color: #222;
+            cursor: pointer;
+        }
+        .user-info {
+            text-align: right;
+            margin-right: 12px;
+        }
+        .user-info strong {
+            font-size: 1rem;
+            color: #222;
+        }
+        .user-info small {
+            display: block;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .logout-link {
+            color: #222;
+            font-size: 0.95rem;
+            text-decoration: underline;
+            margin-left: 8px;
+        }
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 32px 0 0 0;
+            padding-left: 24px;
+        }
+        .sidebar .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sidebar .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            width: 100%;
+        }
+        .sidebar .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #222;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 12px 0;
+            transition: background 0.2s;
+        }
+        .sidebar .menu-item.active,
+        .sidebar .menu-item:hover {
+            background: #e9f5e1;
+            color: #222;
+        }
+        .sidebar .menu-item i {
+            font-size: 2rem;
+            margin-bottom: 4px;
+        }
+        @media (max-width: 900px) {
+            .main-content {
+                margin-left: 60px;
+            }
+            .sidebar {
+                width: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Chào mừng bạn đến trang chủ!</h1>
+<!-- Header -->
+<th:block th:replace="Header :: header"></th:block>
+<div class="main-layout">
+    <!-- Sidebar -->
+    <th:block th:replace="Sidebar :: sidebar"></th:block>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-title">Homepage</div>
+        <!-- ...other content... -->
+    </div>
+</div>
 </body>
 </html>
